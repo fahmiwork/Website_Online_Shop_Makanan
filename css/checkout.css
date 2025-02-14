@@ -1,0 +1,144 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #4b9b8d;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main Checkout Container */
+.checkout-container {
+  background-color: white;
+  width: 85%;
+  max-width: 100%;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  color: #4b9b8d;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  margin: 0 10px;
+}
+
+nav a.active {
+  color: #4b9b8d;
+  font-weight: bold;
+}
+
+/* Checkout Content */
+.checkout-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Order Summary */
+.order-summary {
+  flex: 1;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.product img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-price {
+  font-weight: bold;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity button {
+  background-color: #4b9b8d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Price Details */
+.price-details p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.apply-coupon {
+  color: #4b9b8d;
+  cursor: pointer;
+}
+
+/* Payment Methods */
+.payment-methods {
+  flex: 1;
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.payment-option {
+  margin-bottom: 15px;
+}
+
+.card-details input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.card-info {
+  display: flex;
+  gap: 10px;
+}
+
+.card-info input {
+  width: 48%;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #4b9b8d;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}

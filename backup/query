@@ -1,0 +1,8 @@
+$query = mysqli_query($conn, "SELECT orders.id AS order_id, orders.total, 
+        order_items.quantity, order_items.product_name, order_items.price, 
+        transactions.first_name, transactions.last_name, transactions.email, 
+        transactions.phone, transactions.address, transactions.created_at
+                                      FROM orders 
+                                      INNER JOIN order_items ON orders.id = order_items.order_id 
+                                      INNER JOIN transactions ON orders.id = transactions.order_id 
+                                      WHERE orders.id = '$id'");

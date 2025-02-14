@@ -1,0 +1,63 @@
+<?php
+require_once dirname(__FILE__) . '/midtrans-php-master/Midtrans.php';
+
+// Set konfigurasi Midtrans
+\Midtrans\Config::$serverKey = 'SB-Mid-server-lLJ7-Z53MRr34bVY30nf4LEP';
+\Midtrans\Config::$isProduction = false;
+\Midtrans\Config::$isSanitized = true;
+\Midtrans\Config::$is3ds = true;
+
+// Ambil data dari request
+$data = json_decode(file_get_contents("php://input"), true);
+$firstName = $_POST['first_name'] ?? $data['customer']['first_name'];
+$lastName = $_POST['last_name'] ?? $data['customer']['last_name'];
+$email = $_POST['email'] ?? $data['customer']['email'];
+$phone = $_POST['phone'] ?? $data['customer']['phone'];
+$address = $_POST['address'] ?? $data['customer']['address'];
+
+if (json_last_error() !== JSON_ERROR_NONE) {
+    http_response_code(400);
+    exit;
+}
+
+// Validasi data total dan items
+if (!isset($data['total']) || !isset($data['items']) || !is_array($data['items'])) {
+    http_response_code(400);
+    echo "Invalid data format";
+    exit;
+}
+
+// Siapkan parameter transaksi
+$params = array(
+    'transaction_details' => array(
+        'order_id' => uniqid("order-"), // Order ID unik
+        'gross_amount' => $data['total'], // Total pembayaran
+    ),
+    'item_details' => array_map(function($item) {
+        return array(
+            'id' => $item['id'],
+            'price' => $item['price'],
+            'quantity' => $item['qty'],
+            'name' => $item['title'],
+        );
+    }, $data['items']),
+    'customer_details' => array(
+        'first_name' => $firstName,
+        'last_name' => $lastName,
+        'email' => $email,
+        'phone' => $phone,
+        'address' => $address,
+    ),
+);
+
+try {
+    // Buat Snap Token
+    $snapToken = \Midtrans\Snap::getSnapToken($params);
+    echo $snapToken;
+    
+} catch (Exception $e) {
+    http_response_code(500);
+    echo "Error generating Snap Token: " . $e->getMessage();
+}
+
+?>
