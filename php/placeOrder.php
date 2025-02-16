@@ -15,7 +15,7 @@ try {
     }
 
     // Validasi data yang diperlukan
-    if (empty($data['customer']['first_name']) || empty($data['customer']['last_name']) || empty($data['customer']['email']) || empty($data['customer']['phone']) || empty($data['customer']['address'])) {
+    if (empty($data['customer']['first_name']) || empty($data['customer']['notes']) || empty($data['customer']['email']) || empty($data['customer']['phone']) || empty($data['customer']['address'])) {
         throw new Exception("All customer details are required");
     }
 
@@ -24,7 +24,7 @@ try {
     }
 
     $firstName = $data['customer']['first_name'];
-    $lastName = $data['customer']['last_name'];
+    $notes = $data['customer']['notes'];
     $email = $data['customer']['email'];
     $phone = $data['customer']['phone'];
     $address = $data['customer']['address'];
@@ -86,7 +86,6 @@ include '../database/koneksi.php';
             }, $data['items']),
             'customer_details' => array(
                 'first_name' => $firstName,
-                'last_name' => $lastName,
                 'email' => $email,
                 'phone' => $phone,
                 'address' => $address,
@@ -96,8 +95,8 @@ include '../database/koneksi.php';
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         // Simpan ke tabel transactions dengan order_id yang sama
-        $stmt = $conn->prepare("INSERT INTO transactions (order_id, snap_token, gross_amount, items, first_name, last_name, email, phone, address, id_user, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssdssssssii", $order_id, $snapToken, $grossAmount, $items, $firstName, $lastName, $email, $phone, $address, $id_user, $status);
+        $stmt = $conn->prepare("INSERT INTO transactions (order_id, snap_token, gross_amount, items, first_name, notes, email, phone, address, id_user, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssdssssssii", $order_id, $snapToken, $grossAmount, $items, $firstName, $notes, $email, $phone, $address, $id_user, $status);
 
         $items = json_encode($params['item_details']);
         $status = 1; // Contoh status

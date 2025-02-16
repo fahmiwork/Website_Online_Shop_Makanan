@@ -582,6 +582,14 @@ nav {
   border-radius: 5px;
 }
 
+.checkout-input textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .place-order {
   width: 100%;
   background: teal;
@@ -1226,6 +1234,12 @@ video {
   padding-bottom: 1rem;
 }
 
+.button-print {
+  background-color: #218838;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -1643,7 +1657,7 @@ button.place-order:hover {
     gap: 20px;
     max-width: 100%;
     background-color: #f7f7f7;
-    box-shadow: 1px 1px #a8a8a8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -1669,4 +1683,8 @@ button.place-order:hover {
   .payment-icons {
     justify-content: center;
   }
+}
+
+.print {
+  justify-content: end;
 }

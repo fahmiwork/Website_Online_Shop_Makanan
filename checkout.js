@@ -109,7 +109,7 @@ const placeOrder = async () => {
   const formData = new FormData(document.querySelector("form"));
   const customerDetails = {
     first_name: formData.get("first_name"),
-    last_name: formData.get("last_name"),
+    notes: formData.get("notes"),
     email: formData.get("email"),
     phone: formData.get("phone"),
     address: formData.get("address"),

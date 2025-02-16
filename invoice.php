@@ -29,7 +29,6 @@ if (mysqli_num_rows($result) > 0) {
 </head>
 
 <body>
-  <div>
     <div class="py-4">
       <div class="px-14 py-6">
         <table class="w-full border-collapse border-spacing-0">
@@ -110,7 +109,7 @@ if (mysqli_num_rows($result) > 0) {
               <td class="w-1/2 align-top text-right">
                 <div class="text-sm text-neutral-600">
 
-                  <p class="font-bold"><?= $datas['first_name']?> <?= $datas['last_name']?></p>
+                  <p class="font-bold"><?= $datas['first_name']?></p>
                   <p>Phone: <?= $datas['phone']?></p>
                   <p>Email: <?= $datas['email']?></p>
                   <p><?= $datas['address']?></p>
@@ -150,8 +149,9 @@ if (mysqli_num_rows($result) > 0) {
 
 $query = mysqli_query($conn, "SELECT orders.id AS order_id, orders.total, 
         order_items.quantity, order_items.product_name, order_items.price, 
-        transactions.first_name, transactions.last_name, transactions.email, 
-        transactions.phone, transactions.address, transactions.bank_name, transactions.payment_number, transactions.created_at
+        transactions.first_name, transactions.email, 
+        transactions.phone, transactions.address, transactions.bank_name, 
+        transactions.payment_number, transactions.notes, transactions.created_at
                                       FROM orders 
                                       INNER JOIN order_items ON orders.id = order_items.order_id 
                                       INNER JOIN transactions ON orders.id = transactions.order_id 
@@ -168,6 +168,7 @@ $query = mysqli_query($conn, "SELECT orders.id AS order_id, orders.total,
                         $formatted_date = strftime('%A, %d %B %Y %H:%M', $tanggal); 
                         $bank_name = $data['bank_name'];
                         $payment_number = $data['payment_number'];
+                        $notes = $data['notes'];
                     ?>
               <tr>
                 <td class="border-b py-3 pl-3"><?= $nomor++; ?></td>
@@ -223,19 +224,25 @@ $query = mysqli_query($conn, "SELECT orders.id AS order_id, orders.total,
 
       <div class="px-14 py-10 text-sm text-neutral-700">
         <p class="text-main font-bold">Notes</p>
-        <p class="italic">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries
-          for previewing layouts and visual mockups.</p>
+        <p class="italic"><?= $notes ?></p>
       </div>
-
-      <footer class="fixed bottom-0 left-0 bg-slate-100 w-full text-neutral-600 text-center text-xs py-3">
-        Supplier Company
-        <span class="text-slate-300 px-2">|</span>
-        info@company.com
-        <span class="text-slate-300 px-2">|</span>
-        +1-202-555-0106
-      </footer>
     </div>
+      <div class="button-print">
+  <button onclick="printDiv('.py-4')">Print</button>
+</div>
   </div>
+
 </body>
 
 </html>
+<script>
+function printDiv(className) {
+    let printContents = document.querySelector(className).innerHTML;
+    let originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    location.reload(); // Reload agar tampilan kembali normal setelah print
+}
+</script>

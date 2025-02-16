@@ -28,8 +28,7 @@ include 'header.php';
             <form action="" method="POST">
               <input type="hidden" name="id_user" value="<?= $id ?>">
               <div class="checkout-items">
-                <div class="checkout-summary">
-                </div>
+                
           </div>
           <div class="checkout-summary">
               <h2>Order Summary</h2>
@@ -39,11 +38,11 @@ include 'header.php';
                   
           <div class="checkout-input">
             
-            <p>Nama Depan: <input type="text" name="first_name" required></p>
-            <p>Nama Belakang: <input type="text" name="last_name" required></p>
+            <p>Nama: <input type="text" name="first_name" required></p>
             <p>Email: <input type="email" name="email" required></p>
             <p>Nomor Telepon: <input type="number" name="phone" required></p>
             <p>Alamat: <input type="text" name="address" required></p>
+            Catatan: <p><textarea type="text" name="notes" required></textarea></p>
             <input type="hidden" value="1" name="status">
             <button type="button" id="placeOrderBtn" class="place-order">Place Order</button>
       
