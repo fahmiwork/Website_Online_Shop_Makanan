@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
     <nav>
         <div class="container">
             <strong class="logo">Warung Rohman</strong>
-
             <!-- Menu Tengah -->
             <ul class="nav-menu">
                 <li><a href="index.php">Home</a></li>
@@ -20,7 +18,6 @@
                 <li><a href="pesanan.php">Pesanan</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>
-
             <!-- Tombol Cart dan Hamburger -->
             <div class="nav-icons">
                 <button class="cart-btn" id="cart">
@@ -35,10 +32,7 @@
             </div>
         </div>
     </nav>
-
-
     <div class="cart-overlay"></div>
-
     <div class="cart">
         <div class="cart-header">
             <i class="bi bi-arrow-right cart-close"></i>

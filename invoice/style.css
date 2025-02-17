@@ -626,10 +626,17 @@ video {
   padding-bottom: 1rem;
 }
 
+.container-print {
+  display: flex;
+  justify-content: end;
+  padding: 60px;
+}
 .button-print {
   background-color: #218838;
+  color: white;
+  text-align: center;
   height: 30px;
-  width: 50px;
+  width: 90px;
   cursor: pointer;
   border: none;
   border-radius: 3px;

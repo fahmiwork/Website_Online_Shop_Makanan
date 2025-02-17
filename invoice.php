@@ -227,11 +227,12 @@ $query = mysqli_query($conn, "SELECT orders.id AS order_id, orders.total,
         <p class="italic"><?= $notes ?></p>
       </div>
     </div>
-      <div class="button-print">
-  <button onclick="printDiv('.py-4')">Print</button>
-</div>
+  <div class="container-print">
+    <div class="button-print">
+      <button onclick="printDiv('.py-4')">Print</button>
+    </div>
   </div>
-
+  </div>
 </body>
 
 </html>
